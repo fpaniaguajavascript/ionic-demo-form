@@ -7,14 +7,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="formularioLogin">
+    <ion-input placeholder="Nombre" formControlName="inputNombre"></ion-input>
+    <label class="erroneo" *ngIf="formularioLogin.controls['inputNombre'].dirty && formularioLogin.controls['inputNombre'].invalid">Error</label>
+    <ion-input placeholder="Email" formControlName="inputEmail"></ion-input>
+    <ion-button [disabled]="formularioLogin.invalid">Aceptar</ion-button>
+  </form>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <p class="ion-padding">{{formularioLogin.value | json}}</p>
+  <p class="ion-padding">Dirty:{{formularioLogin.dirty}}</p>
+  <p class="ion-padding">Pristine:{{formularioLogin.pristine}}</p>
+  <p class="ion-padding">Invalid:{{formularioLogin.invalid}}</p>
+  <p class="ion-padding">Touched:{{formularioLogin.touched}}</p>
 </ion-content>
